@@ -3,36 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Markerless AR Rotating Red Sphere</title>
+    <title>Markerless AR Rotating Red Cube</title>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.7.2/aframe/build/aframe-ar-nft.min.js"></script>
+    <script src="https://unpkg.com/aframe-ar.js/aframe-ar.js"></script>
 </head>
 <body style="margin: 0; overflow: hidden;">
+    <!-- AR.js scene for markerless AR -->
     <a-scene embedded arjs="trackingMethod: best; sourceType: webcam;">
-        <!-- Create the red sphere without marker -->
-        <a-entity position="0 0 -3">
-            <a-box id="red-cube" color="#ff0000" depth="1" height="1" width="1" position="0 1 0"></a-box>
+        <!-- Place the red cube in the scene without markers -->
+        <a-entity position="0 0 -2">
+            <a-box id="red-cube" color="#ff0000" depth="1" height="1" width="1" position="0 1.5 0"></a-box>
         </a-entity>
+        <!-- Add camera with look-controls for better user interaction -->
         <a-entity camera="active: true" look-controls></a-entity>
     </a-scene>
 
     <script>
         // Wait for the scene to load
         document.querySelector('a-scene').addEventListener('loaded', function () {
-            // Get the sphere element
+            // Get the cube element by its ID
             const cube = document.getElementById('red-cube');
 
-            // Set an animation loop for rotating the sphere
+            // Initialize rotation
             let rotation = 0;
 
+            // Function to rotate the cube continuously
             function animate() {
-                rotation += 1; // Increase rotation value
-                cube.object3D.rotation.y = THREE.Math.degToRad(rotation); // Apply rotation in degrees to radians
+                rotation += 0.5; // Adjust rotation speed (smaller value for smoother rotation)
+                cube.object3D.rotation.y = THREE.Math.degToRad(rotation); // Apply Y-axis rotation
 
-                requestAnimationFrame(animate); // Continuously animate the scene
+                // Keep the animation going
+                requestAnimationFrame(animate);
             }
 
-            animate(); // Start the animation loop
+            // Start the animation loop
+            animate();
         });
     </script>
 </body>

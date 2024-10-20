@@ -9,10 +9,10 @@
 </head>
 <body style="margin: 0; overflow: hidden;">
     <!-- AR.js scene for markerless AR -->
-    <a-scene embedded arjs="trackingMethod: best; sourceType: webcam;">
+    <a-scene embedded arjs="sourceType: webcam;">
         <!-- Place the red cube in the scene without markers -->
         <a-entity position="0 0 -2">
-            <a-box id="red-cube" color="#ff0000" depth="1" height="1" width="1" position="0 1.5 0"></a-box>
+            <a-box id="red-cube" color="#ff0000" depth="1" height="1" width="1" position="0 1.5 -2"></a-box>
         </a-entity>
         <!-- Add camera with look-controls for better user interaction -->
         <a-entity camera="active: true" look-controls></a-entity>

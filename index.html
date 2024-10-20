@@ -12,7 +12,7 @@
     <a-scene embedded arjs="trackingMethod: best; sourceType: webcam;">
         <!-- Create the red sphere without marker -->
         <a-entity position="0 0 -3">
-            <a-sphere id="red-sphere" color="#ff0000" radius="0.5" position="0 1 -3"></a-sphere>
+            <a-box id="red-cube" color="#ff0000" depth="1" height="1" width="1" position="0 1 0"></a-box>
         </a-entity>
         <a-entity camera="active: true" look-controls></a-entity>
     </a-scene>
@@ -21,14 +21,14 @@
         // Wait for the scene to load
         document.querySelector('a-scene').addEventListener('loaded', function () {
             // Get the sphere element
-            const sphere = document.getElementById('red-sphere');
+            const cube = document.getElementById('red-cube');
 
             // Set an animation loop for rotating the sphere
             let rotation = 0;
 
             function animate() {
                 rotation += 1; // Increase rotation value
-                sphere.object3D.rotation.y = THREE.Math.degToRad(rotation); // Apply rotation in degrees to radians
+                cube.object3D.rotation.y = THREE.Math.degToRad(rotation); // Apply rotation in degrees to radians
 
                 requestAnimationFrame(animate); // Continuously animate the scene
             }
